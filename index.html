@@ -48,31 +48,42 @@
     .start-button {
       position: fixed;
       top: 50%;
-      left: 0%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      padding: 20px 40px;
-      font-size: 1.8rem;
+      padding: 25px 50px;
+      font-size: 2rem;
       font-family: 'Dancing Script', cursive;
-      background: var(--primary);
+      background: linear-gradient(45deg, var(--primary), var(--accent));
       color: white;
       border: none;
-      border-radius: 50px;
+      border-radius: 60px;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      z-index: 1000; /* Increased z-index */
       transition: all 0.3s ease;
-      animation: pulse 2s infinite, glow 1.5s infinite;
+      animation: pulse 2s infinite, glow 1.5s infinite, wiggle 4s infinite;
+      outline: none;
     }
 
     .start-button:hover {
-      background: #ff4785;
-      transform: translate(-50%, -50%) scale(1.1);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(45deg, #ff4785, #ffaa00);
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .start-button:focus {
+      box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.5);
     }
 
     @keyframes glow {
-      0%, 100% { box-shadow: 0 0 10px var(--primary); }
-      50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent); }
+      0%, 100% { box-shadow: 0 0 10px var(--primary), 0 0 20px var(--accent); }
+      50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent), 0 0 40px var(--secondary); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+      25% { transform: translate(-50%, -50%) rotate(2deg); }
+      75% { transform: translate(-50%, -50%) rotate(-2deg); }
     }
 
     /* 25 Background Elements */
@@ -368,6 +379,11 @@
       .cake {
         font-size: 4rem;
       }
+
+      .start-button {
+        padding: 15px 30px;
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -379,7 +395,7 @@
   <div class="number-bg">25</div>
   
   <!-- Start Button -->
-  <button class="start-button">Celebrate Manel!</button>
+  <button class="start-button" aria-label="Celebrate Manel's Birthday">Celebrate Manel!</button>
   
   <!-- Card Container (initially hidden) -->
   <div class="card-container">
